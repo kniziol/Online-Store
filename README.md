@@ -27,6 +27,18 @@ Symfony-based online store.  Allows to display and manage products.
 
 	> This step is optional, because all assets will be installed automatically after installing packages by Composer (step 2)
 
+4. (optional) Install useful scripts as symlinks in the root directory
+
+	```bash
+    $ ln -s bin/meritoo/* .
+    ```
+
+	Usage:
+
+	```bash
+    $ ./cf.sh
+    ```
+
 # Configuration
 
 1. Database connection
