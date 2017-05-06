@@ -1,0 +1,5 @@
+\AppBundle\Entity\Product:
+    product_{1..20}:
+        name: <text(20)>
+        description: <text(120)>
+        price: <randomFloat(2, 0, 999)>
