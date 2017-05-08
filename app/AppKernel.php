@@ -22,6 +22,7 @@ class AppKernel extends Kernel
              * External bundles
              */
             new Stof\DoctrineExtensionsBundle\StofDoctrineExtensionsBundle(),
+            new Knp\Bundle\PaginatorBundle\KnpPaginatorBundle(),
             /*
              * Project specific bundles
              */

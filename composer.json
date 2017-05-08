@@ -1,5 +1,5 @@
 {
-    "name": "kn/online-store",
+    "name": "kniziol/online-store",
     "license": "proprietary",
     "type": "project",
     "autoload": {
@@ -25,6 +25,7 @@
         "doctrine/doctrine-cache-bundle": "^1.2",
         "doctrine/orm": "^2.5",
         "incenteev/composer-parameter-handler": "^2.0",
+        "knplabs/knp-paginator-bundle": "^2.5",
         "sensio/distribution-bundle": "^5.0",
         "sensio/framework-extra-bundle": "^3.0.2",
         "stof/doctrine-extensions-bundle": "^1.2",
