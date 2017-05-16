@@ -1,0 +1,19 @@
+app:
+    application:
+        title: Online Store
+        outdated_browser:
+            part1: You are using an
+            part2: outdated
+            part3: browser. Please
+            part4: upgrade your browser
+            part5: to improve your experience.
+        pages:
+            homepage: Home
+            products: Products
+        homepage:
+            jumbotron:
+                title: Hi, how you doing? :)
+                description: In this app you may browse, add and delete products. Enjoy.
+    action:
+        toggle_navigation: Toggle navigation
+        login: Login

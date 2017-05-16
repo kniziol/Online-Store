@@ -1,0 +1,19 @@
+app:
+    application:
+        title: Online Store
+        outdated_browser:
+            part1: Korzystasz z
+            part2: nieaktualnej
+            part3: przeglądarki.
+            part4: Zaktualizuj ją
+            part5: aby wygodnie korzystać z internetu.
+        pages:
+            homepage: Strona główna
+            products: Produkty
+        homepage:
+            jumbotron:
+                title: Cześć :)
+                description: W tej aplikacji możesz przeglądać produkty, dodawać je i usuwać. Baw się dobrze.
+    action:
+        toggle_navigation: 'Włącz / wyłącz nawigację'
+        login: Zaloguj się

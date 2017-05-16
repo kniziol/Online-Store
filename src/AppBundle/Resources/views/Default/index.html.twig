@@ -1,0 +1,20 @@
+{% extends '@App/layout.html.twig' %}
+{% trans_default_domain 'AppBundle' %}
+
+{% block body_css_class %}homepage{% endblock %}
+
+{% block content_container %}
+    <div class="jumbotron">
+        <div class="container">
+            <h1>{{ 'app.application.homepage.jumbotron.title' | trans }}</h1>
+            <p>{{ 'app.application.homepage.jumbotron.description' | trans }}</p>
+
+            <div class="item">
+                {% set products_translated = 'app.application.pages.products' | trans %}
+
+                <a href="{{ path('app.product.index') }}" class="btn btn-primary">{{ products_translated }}</a>
+                <a href="#" class="btn btn-success">{{ 'app.action.login' | trans }}</a>
+            </div>
+        </div>
+    </div>
+{% endblock %}
