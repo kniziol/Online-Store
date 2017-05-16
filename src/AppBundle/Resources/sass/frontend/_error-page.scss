@@ -1,0 +1,110 @@
+//
+// Online Store
+// Styles of the error page, e.g. 403, 404, 500
+//
+// Created on : 2017-05-06
+// Author     : kniziol, https://github.com/kniziol
+// Copyright  : kniziol
+//
+
+@import '../common/common';
+$main-color: $color-default;
+
+@mixin colorize($error, $color) {
+    &.error-#{$error} {
+        body {
+            background-color: $color;
+
+            .container-fluid {
+                .centering {
+                    .text-center {
+                        .error-number {
+                            color: $color;
+                        }
+
+                        .btn {
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+html {
+    &.error-page {
+        height: 100%;
+        min-height: 100%;
+        min-width: 100%;
+        overflow: hidden;
+        width: 100%;
+
+        @include colorize(403, $color-blue);
+        @include colorize(500, $color-red);
+
+        body {
+            @include display-flex-centered(true);
+
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            background-color: $main-color;
+            color: #fff;
+
+            .container-fluid {
+                &:before {
+                    opacity: 0.04;
+                    z-index: -1;
+                    background: url('/images/homepage/homepage-top.jpg') no-repeat;
+                    position: absolute;
+                    width: 100%;
+                    height: 100%;
+                    top: 25%;
+                    left: 0;
+                }
+
+                .centering {
+                    .text-center {
+                        @include display-flex-centered(true);
+                        flex-direction: column;
+
+                        .error-number {
+                            @include display-flex-centered(true);
+                            $size: 256px;
+
+                            background-color: #fff;
+                            color: $main-color;
+                            width: $size;
+                            height: $size;
+                            border-radius: 50%;
+                            font-size: 100px;
+                            font-family: $font-bold;
+                        }
+
+                        h1 {
+                            font-family: $font-light-extra;
+                            font-size: 45px;
+                            margin-bottom: 50px;
+                            margin-top: 40px;
+                        }
+
+                        .btn {
+                            $padding-horizontal: 95px;
+                            $padding-vertical: 15px;
+
+                            border: 2px solid #fff;
+                            text-transform: uppercase;
+                            background-color: transparent;
+                            color: #fff;
+                            font-family: $font-light;
+                            padding: $padding-vertical $padding-horizontal;
+
+                            @include element-states($color-default, '', $brand-primary);
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

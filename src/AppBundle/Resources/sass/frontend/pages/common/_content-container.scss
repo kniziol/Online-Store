@@ -1,0 +1,19 @@
+//
+// Online Store
+// Common styles of the main container with content
+//
+// Created on : 2017-05-06
+// Author     : Meritoo.pl, http://www.meritoo.pl
+// Copyright  : Meritoo.pl
+//
+
+section {
+    &.content {
+        > .container {
+            padding: {
+                top: $grid-gutter-width;
+                bottom: $grid-gutter-width;
+            }
+        }
+    }
+}

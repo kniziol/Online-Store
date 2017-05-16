@@ -19,15 +19,29 @@ Symfony-based online store.  Allows to display and manage products.
 
 	> How to install Composer: https://getcomposer.org/download
 
-3. (optional) Install assets (stylesheets, javascripts, images and other stuff)
+3. Install ```npm``` and ```bower``` packages
+
+	```bash
+    $ npm install && bower install
+	```
+
+4. Install assets (stylesheets, javascripts, images and other stuff)
+
+	a) required step
+
+	```bash
+    $ gulp
+    ```
+
+	b) optional step
 
     ```bash
     $ php bin/console assets:install --symlink
     ```
 
-	> This step is optional, because all assets will be installed automatically after installing packages by Composer (step 2)
+	> Optional, because all assets will be installed in this way automatically after installing packages by Composer (step 2)
 
-4. (optional) Install useful scripts as symlinks in the root directory
+5. (optional) Install useful scripts as symlinks in the root directory
 
 	```bash
     $ ln -s bin/meritoo/* .

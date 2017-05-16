@@ -1,0 +1,47 @@
+//
+// Online Store
+// Common fonts used in the whole application
+//
+// Created on : 2017-05-06
+// Author     : kniziol, https://github.com/kniziol
+// Copyright  : kniziol
+//
+
+$fonts: (
+    'Lato': (
+        'Black',
+        'BlackItalic',
+        'Bold',
+        'BoldItalic',
+        'Hairline',
+        'HairlineItalic',
+        'Heavy',
+        'HeavyItalic',
+        'Italic',
+        'Light',
+        'LightItalic',
+        'Medium',
+        'MediumItalic',
+        'Regular',
+        'Semibold',
+        'SemiboldItalic',
+        'Thin',
+        'ThinItalic'
+    )
+);
+
+@include build-font-face($fonts);
+
+//
+// Attention.
+// Required to avoid problem with linked letters "f" and "i" if they are placed one above the other, e.g. in word "find".
+//
+// Details:
+// https://pl.wikipedia.org/wiki/Ligatura_(pismo)
+// https://developer.mozilla.org/pl/docs/Web/CSS/font-variant-ligatures
+//
+html,
+body {
+    -webkit-font-variant-ligatures: no-common-ligatures;
+    font-variant-ligatures: no-common-ligatures;
+}

@@ -1,0 +1,64 @@
+//
+// Online Store
+// Bootstrap's variables
+// Overridden to get required look-and-feel by the application
+//
+// Created on : 2017-05-06
+// Author     : Meritoo.pl, http://www.meritoo.pl
+// Copyright  : Meritoo.pl
+//
+
+//
+// Glyphicons
+//
+$icon-font-path: '/fonts/bootstrap-glyphicons/';
+
+//
+// Typography
+//
+$font-size-base: 14px; // default;
+
+//
+// Colors
+//
+$brand-primary: $color-blue; // default: darken(#428bca, 6.5%)
+$brand-success: $color-green; // default: #5cb85c
+$brand-info: lighten($color-blue, 8%); // default: #5bc0de
+$brand-warning: $color-yellow; // default: #f0ad4e
+$brand-danger: $color-red; // default: #d9534f
+
+//
+// Scaffolding
+//
+$body-bg: #fff; // default: #fff
+$text-color: $color-default; // default: $gray-dark
+$link-color: $brand-primary; // default: $brand-primary
+//$link-hover-color: darken($link-color, 15%); // default: darken($link-color, 15%)
+$link-hover-decoration: none; // default: underline
+
+//
+// Navbars
+//
+//$navbar-height: 90px; // default: 50px
+//$navbar-padding-vertical: $line-height-computed; // default: (($navbar-height - $line-height-computed) / 2)
+//$navbar-border-radius: 0; // default: $border-radius-base
+//$navbar-margin-bottom: 0; // default: $line-height-computed
+$navbar-default-bg: #fff; // default: #f8f8f8
+//$navbar-default-link-color: #000; // default: #777
+//$navbar-default-link-hover-color: lighten($navbar-default-link-color, 20%); // default: #333
+$navbar-default-link-active-bg: #f8f8f8; // default: darken($navbar-default-bg, 6.5%)
+//$navbar-default-link-active-color: #000; // default: #555
+//$navbar-default-toggle-border-color: transparent; // default: #ddd
+//$navbar-default-toggle-icon-bar-bg: $color-default; // default: #888
+//$navbar-default-toggle-hover-bg: transparent; // default: #ddd
+//$navbar-default-brand-color: $color-2; // default: $navbar-default-link-color
+
+//
+// Jumbotron
+//
+$jumbotron-padding: 20px; // default: 30px
+//$jumbotron-color: inherit; // default: inherit
+//$jumbotron-bg: $gray-lighter; // default: $gray-lighter
+//$jumbotron-heading-color: inherit; // default: inherit
+//$jumbotron-font-size: ceil(($font-size-base * 1.5)); // default: ceil(($font-size-base * 1.5))
+$jumbotron-heading-font-size: ceil(($font-size-base * 3.3)); // default: ceil(($font-size-base * 4.5))

@@ -1,0 +1,43 @@
+//
+// Online Store
+// Main and global styles
+//
+// Created on : 2017-05-06
+// Author     : kniziol, https://github.com/kniziol
+// Copyright  : kniziol
+//
+@import 'common';
+@import 'bootstrap';
+@import 'selection';
+@import 'header';
+@import 'footer';
+@import 'error-page';
+@import 'pages';
+
+a {
+    &:hover,
+    &:active,
+    &:focus {
+        text-decoration: none;
+    }
+}
+
+strong {
+    font-family: $font-bold;
+}
+
+p {
+    &.chromeframe {
+        $padding: $grid-gutter-width * 1 / 3;
+
+        margin: 0;
+        padding: {
+            top: $padding;
+            bottom: $padding;
+        }
+    }
+}
+
+.no-picture-box {
+    @include custom-no-picture-box();
+}

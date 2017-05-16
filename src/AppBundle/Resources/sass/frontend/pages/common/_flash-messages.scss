@@ -1,0 +1,19 @@
+//
+// Online Store
+// Common styles of flash messages
+//
+// Created on : 2017-05-06
+// Author     : Meritoo.pl, http://www.meritoo.pl
+// Copyright  : Meritoo.pl
+//
+
+section {
+    &.flash-messages {
+        margin-top: $grid-gutter-width;
+
+        .alert {
+            &:last-child {
+            }
+        }
+    }
+}

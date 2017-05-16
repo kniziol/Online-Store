@@ -1,0 +1,27 @@
+//
+// Online Store
+// Styles for pagination
+//
+// Created on : 2017-05-06
+// Author     : kniziol, https://github.com/kniziol
+// Copyright  : kniziol
+//
+
+@mixin selection-style() {
+    background: rgba($color-blue, 0.2);
+    color: darken($color-blue, 10%);
+}
+
+/*
+ * WebKit/Blink Browsers
+ */
+::selection {
+    @include selection-style();
+}
+
+/*
+ * Gecko Browsers
+ */
+::-moz-selection {
+    @include selection-style();
+}

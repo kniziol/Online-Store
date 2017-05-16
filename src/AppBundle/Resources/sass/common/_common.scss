@@ -1,0 +1,59 @@
+//
+// Online Store
+// Common styles, variables, mixins etc. used in the whole application
+//
+// Created on : 2017-05-06
+// Author     : kniziol, https://github.com/kniziol
+// Copyright  : kniziol
+//
+
+@mixin build-font-face($fonts) {
+    @each $family, $names in $fonts {
+        @each $name in $names {
+            $path: '/fonts/' + $family + '/' + $family + '-' + $name;
+
+            @font-face {
+                font-family: quote(unquote($family) + ' ' + unquote($name));
+                src: url($path + '.ttf') format('truetype'),
+                     url($path + '.woff') format('woff'),
+                     url($path + '.woff2') format('woff2');
+            }
+        }
+    }
+}
+
+@mixin element-states($color: '', $text-decoration: '', $background-color: '') {
+    &:hover,
+    &:active,
+    &:focus {
+        @if $color != '' {
+            color: $color;
+        }
+
+        @if $text-decoration != '' {
+            text-decoration: $text-decoration;
+        }
+
+        @if $background-color != '' {
+            background-color: $background-color;
+        }
+    }
+}
+
+@mixin display-flex() {
+    display: -webkit-box;       /* OLD - iOS 6-, Safari 3.1-6, BB7 */
+    display: -ms-flexbox;       /* TWEENER - IE 10 */
+    display: -webkit-flex;      /* NEW - Safari 6.1+. iOS 7.1+, BB10 */
+    display: flex;              /* NEW, Spec - Firefox, Chrome, Opera */
+}
+
+@mixin display-flex-centered($verticallyToo: false) {
+    @include display-flex();
+
+    flex-wrap: wrap;
+    justify-content: center;
+
+    @if $verticallyToo {
+        align-items: center;
+    }
+}

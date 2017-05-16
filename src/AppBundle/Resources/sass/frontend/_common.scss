@@ -1,0 +1,82 @@
+//
+// Online Store
+// Common styles, variables, mixins etc.
+//
+// Created on : 2017-05-06
+// Author     : kniziol, https://github.com/kniziol
+// Copyright  : kniziol
+//
+
+//
+// Variables
+//
+$color-blue: #3157ff;
+$color-red: #FF1919;
+$color-yellow: #FFBA19;
+$color-green: #1DBB1D;
+$color-black: #444;
+$color-default: $color-black;
+
+$font-family: 'Lato';
+$font-family1-regular: $font-family + ' Regular', sans-serif;
+$font-family1-medium: $font-family + ' Medium', sans-serif;
+$font-family1-light: $font-family + ' Light', sans-serif;
+$font-family1-thin: $font-family + ' Thin', sans-serif;
+$font-family1-italic: $font-family + ' Italic', sans-serif;
+$font-family1-black: $font-family + ' Black', sans-serif;
+$font-family1-bold: $font-family + ' Bold', sans-serif;
+$font-family1-semi-bold: $font-family + ' SemiBold', sans-serif;
+$font-family1-extra-bold: $font-family + ' ExtraBold', sans-serif;
+$font-family1-extra-light: $font-family + ' ExtraLight', sans-serif;
+
+$font-regular: $font-family1-regular;
+$font-light: $font-family1-light;
+$font-light-extra: $font-family1-extra-light;
+$font-heavy: $font-family1-extra-bold;
+$font-bold: $font-family1-bold;
+$font-semi-bold: $font-family1-bold;
+$font-italic: $font-family1-italic;
+
+$font-default: $font-light;
+$box-border: 1px solid $color-default;
+
+//
+// Mixins
+//
+@mixin custom-placeholder() {
+    &::-moz-placeholder {
+        color: $color-blue;
+        opacity: 1; // Override Firefox's unusual default opacity; see https://github.com/twbs/bootstrap/pull/11526
+        font-family: $font-light;
+        text-align: center;
+        text-transform: uppercase;
+    }
+    &:-ms-input-placeholder {
+        color: $color-blue;
+        font-family: $font-light;
+        text-align: center;
+        text-transform: uppercase;
+    }
+    &::-webkit-input-placeholder {
+        color: $color-blue;
+        font-family: $font-light;
+        text-align: center;
+        text-transform: uppercase;
+    }
+}
+
+@mixin custom-no-picture-box() {
+    $color-light: lighten($color-default, 25%);
+    $color-lighter: lighten($color-default, 28%);
+
+    background-color: $color-light;
+    display: flex;
+    justify-content: center;
+    margin: auto;
+
+    img {
+        display: block;
+        height: 120px;
+        margin: auto;
+    }
+}
