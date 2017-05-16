@@ -39,8 +39,9 @@
         "doctrine/data-fixtures": "^1.2",
         "hautelook/alice-bundle": "^2.0@beta",
         "nelmio/alice": "^3.0@beta",
+        "phpunit/phpunit": "^6.1",
         "sensio/generator-bundle": "^3.0",
-        "symfony/phpunit-bridge": "^3.0",
+        "symfony/phpunit-bridge": "^3.0 <=3.2.4",
         "theofidry/alice-data-fixtures": "^1.0@beta"
     },
     "scripts": {
