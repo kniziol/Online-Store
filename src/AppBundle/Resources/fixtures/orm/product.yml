@@ -3,3 +3,4 @@
         name: <text(20)>
         description: <text(120)>
         price: <randomFloat(2, 0, 999)>
+        createdAt: <dateTimeBetween('-2 weeks')>

@@ -14,6 +14,15 @@ app:
             jumbotron:
                 title: Cześć :)
                 description: W tej aplikacji możesz przeglądać produkty, dodawać je i usuwać. Baw się dobrze.
+        list:
+            position: Lp.
+            no_data: Ups, nie ma nic do pokazania
+            all_items: Ile wszystkich
     action:
         toggle_navigation: 'Włącz / wyłącz nawigację'
         login: Zaloguj się
+    label:
+        product:
+            name: Nazwa
+            price: Cena
+            created_at: Utworzono

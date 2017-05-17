@@ -14,6 +14,15 @@ app:
             jumbotron:
                 title: Hi, how you doing? :)
                 description: In this app you may browse, add and delete products. Enjoy.
+        list:
+            position: '#'
+            no_data: Sorry, there is nothing to show
+            all_items: All items
     action:
         toggle_navigation: Toggle navigation
         login: Login
+    label:
+        product:
+            name: Name
+            price: Price
+            created_at: Created

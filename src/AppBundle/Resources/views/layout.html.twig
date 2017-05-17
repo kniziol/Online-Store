@@ -61,6 +61,16 @@
         <section class="content">
             {% block content_container %}
                 <div class="container">
+                    {% if block('content_title') is defined and block('content_title') is not empty %}
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <h1 class="page-header">
+                                    {{ block('content_title') }}
+                                </h1>
+                            </div>
+                        </div>
+                    {% endif %}
+
                     <div class="row">
                         <div class="col-xs-12">
                             {% block content %}

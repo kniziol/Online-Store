@@ -1,0 +1,46 @@
+{% extends '@App/layout.html.twig' %}
+{% trans_default_domain 'AppBundle' %}
+
+{% block body_css_class %}products{% endblock %}
+{% block content_title %}{{ 'app.application.pages.products' | trans }}{% endblock %}
+
+{% block content %}
+    {% set page_number = pagination.getPage() %}
+    {% set per_page = pagination.getItemNumberPerPage() %}
+
+    {% if page_number is empty %}
+        {% set page_number = 1 %}
+    {% endif %}
+
+    <div class="table-count text-right">
+        {{ 'app.application.list.all_items' | trans }}: <span class="badge">{{ pagination.getTotalItemCount() }}</span>
+    </div>
+
+    <div class="table-responsive">
+        <table class="table table-striped{% if pagination.count() > 0 %} table-hover{% endif %}">
+            <tr>
+                <th>{{ 'app.application.list.position' | trans }}</th>
+                <th>{{ 'app.label.product.name' | trans }}</th>
+                <th>{{ 'app.label.product.price' | trans }}</th>
+                <th>{{ 'app.label.product.created_at' | trans }}</th>
+            </tr>
+
+            {% for product in pagination %}
+                <tr>
+                    <td>{{ app_paginated_item_number(loop.index, per_page, page_number) }}</td>
+                    <td>{{ product.name }}</td>
+                    <td>{{ product.price | app_currency_format }}</td>
+                    <td>{{ product.createdAt | app_date_format(true) }}</td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="4" class="text-center warning no-data">{{ 'app.application.list.no_data' | trans }}</td>
+                </tr>
+            {% endfor %}
+        </table>
+    </div>
+
+    <div class="navigation text-center">
+        {{ knp_pagination_render(pagination) }}
+    </div>
+{% endblock %}

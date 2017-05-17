@@ -1,0 +1,26 @@
+//
+// Online Store
+// Styles for the list
+//
+// Created on : 2017-05-17
+// Author     : Meritoo.pl, http://www.meritoo.pl
+// Copyright  : Meritoo.pl
+//
+
+.table-count {
+    $padding: $grid-gutter-width * 1 / 2;
+
+    padding: {
+        top: $padding;
+        bottom: $padding;
+    }
+}
+
+.table {
+    td {
+        &.no-data {
+            color: darken($brand-warning, 30%);
+            padding: $grid-gutter-width;
+        }
+    }
+}
