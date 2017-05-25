@@ -5,7 +5,6 @@ namespace AppBundle\Controller;
 use AppBundle\Form\Type\LoginType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 
 /**
@@ -14,7 +13,7 @@ use Symfony\Component\HttpFoundation\Request;
  * @author    Krzysztof Niziol <krzysztof.niziol@meritoo.pl>
  * @copyright Meritoo.pl
  */
-class SecurityController extends Controller
+class SecurityController extends BaseController
 {
     /**
      * The login action.
