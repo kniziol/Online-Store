@@ -11,9 +11,11 @@
 
             <div class="item">
                 {% set products_translated = 'app.application.pages.products' | trans %}
-
                 <a href="{{ path('app.product.index') }}" class="btn btn-primary">{{ products_translated }}</a>
-                <a href="#" class="btn btn-success">{{ 'app.action.login' | trans }}</a>
+
+                {% if app.user is null %}
+                    <a href="{{ path('app.login') }}" class="btn btn-success">{{ 'app.action.login' | trans }}</a>
+                {% endif %}
             </div>
         </div>
     </div>

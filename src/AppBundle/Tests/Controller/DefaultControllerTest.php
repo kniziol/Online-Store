@@ -30,11 +30,14 @@ class DefaultControllerTest extends WebTestCase
         self::assertEquals(2, $jumbotronContainer->filter('.item .btn')->count());
 
         $buttonsCrawler = $jumbotronContainer->filter('.item .btn');
-        $productsButtonCrawler = $buttonsCrawler->eq(0);
-        $loginButtonCrawler = $buttonsCrawler->eq(1);
+        $productsButton = $buttonsCrawler->eq(0);
+        $loginButton = $buttonsCrawler->eq(1);
 
-        self::assertEquals('/product', $productsButtonCrawler->attr('href'));
-        self::assertEquals('#', $loginButtonCrawler->attr('href'));
+        self::assertEquals('Products', $productsButton->text());
+        self::assertEquals('/product', $productsButton->attr('href'));
+
+        self::assertEquals('Login', $loginButton->text());
+        self::assertEquals('/login', $loginButton->attr('href'));
     }
 
     public function testApplicationName()
@@ -53,5 +56,24 @@ class DefaultControllerTest extends WebTestCase
 
         self::assertEquals(2, $navbar->count());
         self::assertEquals(2, $navbar->first()->filter('li')->count());
+    }
+
+    public function testMenuItems()
+    {
+        $client = static::createClient();
+        $crawler = $client->request('GET', '/');
+        $navbar = $crawler->filter('header .navbar #navbar .navbar-nav')->first();
+
+        $navbarLinks = $navbar->filter('li a');
+        $homepageLink = $navbarLinks->eq(0);
+        $productsLink = $navbarLinks->eq(1);
+
+        self::assertEquals(2, $navbar->children()->count());
+
+        self::assertEquals('Home', $homepageLink->text());
+        self::assertEquals('/', $homepageLink->attr('href'));
+
+        self::assertEquals('Products', $productsLink->text());
+        self::assertEquals('/product', $productsLink->attr('href'));
     }
 }

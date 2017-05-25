@@ -10,6 +10,7 @@ app:
         pages:
             homepage: Strona główna
             products: Produkty
+            login: Logowanie
         homepage:
             jumbotron:
                 title: Cześć :)
@@ -21,8 +22,14 @@ app:
     action:
         toggle_navigation: 'Włącz / wyłącz nawigację'
         login: Zaloguj się
+        logout: Wyloguj się
+        log_me_in: Zaloguj
     label:
         product:
             name: Nazwa
             price: Cena
             created_at: Utworzono
+        login:
+            username: Użytkownik
+            password: Hasło
+            signed_as: Zalogowano jako

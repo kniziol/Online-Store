@@ -1,0 +1,33 @@
+//
+// Online Store
+// Styles for the Login page
+//
+// Created on : 2017-05-18
+// Author     : Meritoo.pl, http://www.meritoo.pl
+// Copyright  : Meritoo.pl
+//
+
+.login {
+    section {
+        &.content {
+            .row {
+                &.content {
+                    $padding: $grid-gutter-width * 2 / 3;
+
+                    padding: {
+                        top: $padding;
+                        bottom: $padding;
+                    }
+
+                    form {
+                        .form-group {
+                            &:last-of-type {
+                                margin-bottom: 0;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

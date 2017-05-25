@@ -1,0 +1,10 @@
+{% extends '@App/layout.html.twig' %}
+{% trans_default_domain 'AppBundle' %}
+
+{% block body_css_class %}login{% endblock %}
+{% block content_title %}{{ 'app.application.pages.login' | trans }}{% endblock %}
+{% block content_column_classes %}col-xs-4 col-xs-offset-4{% endblock %}
+
+{% block content %}
+    {{ form(form) }}
+{% endblock %}

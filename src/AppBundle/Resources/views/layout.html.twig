@@ -1,8 +1,19 @@
 {% trans_default_domain 'AppBundle' %}
+
 {% set body_css_classes = '' %}
+{% set content_column_classes = 'col-xs-12' %}
+{% set content_title = '' %}
 
 {% if block('body_css_class') is defined %}
     {% set body_css_classes = block('body_css_class') | trim %}
+{% endif %}
+
+{% if block('content_column_classes') is defined and block('content_column_classes') is not empty %}
+    {% set content_column_classes = block('content_column_classes') %}
+{% endif %}
+
+{% if block('content_title') is defined and block('content_title') is not empty %}
+    {% set content_title = block('content_title') %}
 {% endif %}
 
 <!doctype html>
@@ -56,27 +67,40 @@
         {% include '@App/Common/header.html.twig' %}
 
         {#
+         # The flashes
+         #}
+        {% include '@App/Common/flashes.html.twig' %}
+
+        {#
          # The content
          #}
         <section class="content">
             {% block content_container %}
                 <div class="container">
-                    {% if block('content_title') is defined and block('content_title') is not empty %}
-                        <div class="row">
+                    {#
+                     # Row with title of content
+                     #}
+                    {% if content_title is not empty %}
+                        <div class="row title">
                             <div class="col-xs-12">
                                 <h1 class="page-header">
-                                    {{ block('content_title') }}
+                                    {{ content_title }}
                                 </h1>
                             </div>
                         </div>
                     {% endif %}
 
-                    <div class="row">
-                        <div class="col-xs-12">
-                            {% block content %}
-                            {% endblock %}
+                    {#
+                     # ...and row with content itself
+                     #}
+                    {% block content_row %}
+                        <div class="row content">
+                            <div class="{{ content_column_classes }}">
+                                {% block content %}
+                                {% endblock %}
+                            </div>
                         </div>
-                    </div>
+                    {% endblock %}
                 </div>
             {% endblock %}
         </section>

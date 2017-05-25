@@ -5,20 +5,41 @@ security:
     # http://symfony.com/doc/current/security.html#b-configuring-how-users-are-loaded
     providers:
         in_memory:
-            memory: ~
+            memory:
+                users:
+                    admin:
+                        password: $2y$10$Ge569huSKGErk1zy4ZSfU.ECPqia2zJao2Is/fuuazQTo7wG9oXty # adminpassword
+                        roles: ROLE_ADMIN
+                    john:
+                        password: $2y$10$EpGtLboZXoIJOGOrlvqOCOJ.5p9NNi9hLNVpAxZAOTn4N3EQ5twti # johnpassword
+                        roles: ROLE_USER
+    encoders:
+        Symfony\Component\Security\Core\User\User:
+            algorithm: bcrypt
+            cost: 10
+
+    role_hierarchy:
+        ROLE_ADMIN:       ROLE_USER
+        ROLE_SUPER_ADMIN: [ROLE_ADMIN, ROLE_ALLOWED_TO_SWITCH]
 
     firewalls:
         # disables authentication for assets and the profiler, adapt it according to your needs
         dev:
-            pattern: ^/(_(profiler|wdt)|css|images|js)/
+            pattern:  ^/(_(profiler|wdt)|css|images|js)/
             security: false
 
         main:
             anonymous: ~
-            # activate different ways to authenticate
+            form_login:
+                login_path: app.login
+                check_path: app.login
+                username_parameter: login[username]
+                password_parameter: login[password]
+            logout:
+                path:   /logout
+                target: /
 
-            # http://symfony.com/doc/current/security.html#a-configuring-how-your-users-will-authenticate
-            #http_basic: ~
-
-            # http://symfony.com/doc/current/cookbook/security/form_login_setup.html
-            #form_login: ~
+    access_control:
+        - { path: ^/admin, roles: IS_AUTHENTICATED_FULLY }
+        - { path: ^/logout$, roles: IS_AUTHENTICATED_FULLY }
+        - { path: ^/, roles: IS_AUTHENTICATED_ANONYMOUSLY }

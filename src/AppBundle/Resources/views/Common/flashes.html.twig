@@ -1,0 +1,15 @@
+{% set all_flashes = app.session.flashBag.all %}
+
+{% if all_flashes is not empty %}
+    <section id="flash-messages" class="container">
+        <div class="row">
+            {% for type, flashes in all_flashes %}
+                {% for flash in flashes %}
+                    <div class="col-xs-12 alert alert-{{ type }} {{ type }}">
+                        {{ flash | raw }}
+                    </div>
+                {% endfor %}
+            {% endfor %}
+        </div>
+    </section>
+{% endif %}

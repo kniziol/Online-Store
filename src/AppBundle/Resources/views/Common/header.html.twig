@@ -23,8 +23,22 @@
                     </li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
+                    {% set is_anonymous = app.user is null %}
+
+                    {% set route = 'app.logout' %}
+                    {% set label = 'app.action.logout' %}
+
+                    {% if is_anonymous %}
+                        {% set route = 'app.login' %}
+                        {% set label = 'app.action.login' %}
+                    {% else %}
+                        <li>
+                            <p class="navbar-text">{{ '%s %s' | format('app.label.login.signed_as' | trans, app.user) }}</p>
+                        </li>
+                    {% endif %}
+
                     <li>
-                        <a href="#">{{ 'app.action.login' | trans }}</a>
+                        <a href="{{ path(route) }}">{{ label | trans }}</a>
                     </li>
                 </ul>
             </div><!--/.navbar-collapse -->

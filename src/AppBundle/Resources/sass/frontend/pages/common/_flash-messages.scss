@@ -8,11 +8,14 @@
 //
 
 section {
-    &.flash-messages {
-        margin-top: $grid-gutter-width;
-
+    &#flash-messages {
         .alert {
-            &:last-child {
+            &:first-of-type {
+                margin-top: $grid-gutter-width * 2 / 3;
+            }
+
+            &:last-of-type {
+                margin-bottom: 0;
             }
         }
     }
