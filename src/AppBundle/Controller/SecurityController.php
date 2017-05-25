@@ -39,16 +39,10 @@ class SecurityController extends BaseController
         if (!empty($lastError)) {
             $key = $lastError->getMessageKey();
             $domain = 'security_flash_messages';
-            $data = $lastError->getMessageData();
-
-            $translated = $this
-                ->get('translator')
-                ->trans($key, $data, $domain);
 
             $this
-                ->get('session')
-                ->getFlashBag()
-                ->add('danger', $translated);
+                ->get('app.flash.helper')
+                ->add($key, false, $domain);
         }
 
         return [
