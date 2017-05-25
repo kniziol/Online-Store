@@ -6,7 +6,14 @@
 {% block content_container %}
     <div class="jumbotron">
         <div class="container">
-            <h1>{{ 'app.application.homepage.jumbotron.title' | trans }}</h1>
+            {% set is_anonymous = app.user is null %}
+            {% set name = '' %}
+
+            {% if not is_anonymous %}
+                {% set name = ' %s' | format(app.user) %}
+            {% endif %}
+
+            <h1>{{ 'app.application.homepage.jumbotron.title' | trans({'%name%': name }) }}</h1>
             <p>{{ 'app.application.homepage.jumbotron.description' | trans }}</p>
 
             <div class="item">

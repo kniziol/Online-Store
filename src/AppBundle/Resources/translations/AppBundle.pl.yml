@@ -13,7 +13,7 @@ app:
             login: Logowanie
         homepage:
             jumbotron:
-                title: Cześć :)
+                title: Cześć%name%, co słychać? :)
                 description: W tej aplikacji możesz przeglądać produkty, dodawać je i usuwać. Baw się dobrze.
         list:
             position: Lp.

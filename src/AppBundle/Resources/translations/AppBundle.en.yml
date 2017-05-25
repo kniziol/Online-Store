@@ -13,7 +13,7 @@ app:
             login: Login
         homepage:
             jumbotron:
-                title: Hi, how you doing? :)
+                title: Hi%name%, how you doing? :)
                 description: In this app you may browse, add and delete products. Enjoy.
         list:
             position: '#'
