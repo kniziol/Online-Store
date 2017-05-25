@@ -5,12 +5,12 @@ namespace AppBundle\Tests\Controller;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
 /**
- * Test case for the DefaultController
+ * Test case for the MainController
  *
  * @author    Krzysztof Niziol <krzysztof.niziol@meritoo.pl>
  * @copyright Meritoo.pl
  */
-class DefaultControllerTest extends WebTestCase
+class MainControllerTest extends WebTestCase
 {
     public function testHomepageUrl()
     {
