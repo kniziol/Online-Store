@@ -12,8 +12,27 @@ section {
         > .container {
             padding-top: $grid-gutter-width * 2 / 3;
 
-            .page-header {
-                margin: 0;
+            .row {
+                &.title {
+                    .page-header {
+                        margin: 0;
+                    }
+
+                    .actions {
+                        position: absolute;
+                        top: $grid-gutter-width * 1 / 10;
+                        right: $grid-gutter-width * 1 / 2;
+                    }
+                }
+
+                &.content {
+                    $padding: $grid-gutter-width * 2 / 3;
+
+                    padding: {
+                        top: $padding;
+                        bottom: $padding;
+                    }
+                }
             }
         }
     }

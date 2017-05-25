@@ -31,13 +31,13 @@ class MainControllerTest extends WebTestCase
 
         $buttonsCrawler = $jumbotronContainer->filter('.item .btn');
         $productsButton = $buttonsCrawler->eq(0);
-        $loginButton = $buttonsCrawler->eq(1);
+        $addProductButton = $buttonsCrawler->eq(1);
 
         self::assertEquals('Products', $productsButton->text());
         self::assertEquals('/product', $productsButton->attr('href'));
 
-        self::assertEquals('Login', $loginButton->text());
-        self::assertEquals('/login', $loginButton->attr('href'));
+        self::assertEquals('Add product', $addProductButton->text());
+        self::assertEquals('/admin/new-product', $addProductButton->attr('href'));
     }
 
     public function testApplicationName()

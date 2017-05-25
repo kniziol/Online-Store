@@ -8,26 +8,4 @@
 //
 
 .login {
-    section {
-        &.content {
-            .row {
-                &.content {
-                    $padding: $grid-gutter-width * 2 / 3;
-
-                    padding: {
-                        top: $padding;
-                        bottom: $padding;
-                    }
-
-                    form {
-                        .form-group {
-                            &:last-of-type {
-                                margin-bottom: 0;
-                            }
-                        }
-                    }
-                }
-            }
-        }
-    }
 }

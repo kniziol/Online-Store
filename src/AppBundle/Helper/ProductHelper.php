@@ -59,4 +59,18 @@ class ProductHelper
             ->knpPaginator
             ->paginate($queryBuilder, $pageNumber, $perPage);
     }
+
+    /**
+     * Creates a product
+     *
+     * @param Product $product The product to create
+     * @return $this
+     */
+    public function createProduct(Product $product)
+    {
+        $this->entityManager->persist($product);
+        $this->entityManager->flush();
+
+        return $this;
+    }
 }

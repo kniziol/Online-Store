@@ -59,8 +59,8 @@ $navbar-default-link-active-bg: #f8f8f8; // default: darken($navbar-default-bg, 
 $state-danger-text: $color-red; // default: #a94442
 $state-danger-bg: lighten($state-danger-text, 40%); // default: #f2dede
 $state-danger-border: darken(adjust-hue($state-danger-bg, -10), 5%); // default: darken(adjust-hue($state-danger-bg, -10), 5%)
-$state-success-text: $color-green; // default: #3c763d
-$state-success-bg: lighten($state-success-text, 35%); // default: #dff0d8
+$state-success-text: darken($color-green, 7%); // default: #3c763d
+$state-success-bg: lighten($color-green, 45%); // default: #dff0d8
 $state-success-border: darken(adjust-hue($state-success-bg, -10), 5%); // default: darken(adjust-hue($state-success-bg, -10), 5%)
 
 //

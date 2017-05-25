@@ -2,7 +2,16 @@
 {% trans_default_domain 'AppBundle' %}
 
 {% block body_css_class %}products{% endblock %}
-{% block content_title %}{{ 'app.application.pages.products' | trans }}{% endblock %}
+{% block content_title %}{{ 'app.application.pages.products.list' | trans }}{% endblock %}
+
+{% block content_title_actions %}
+    {% set add_product_translated = 'app.action.products.add' | trans %}
+    <a href="{{ path('app.admin.new_product') }}" class="btn btn-success add-product">{{ add_product_translated }}</a>
+
+    <div class="all-items-count">
+        {{ 'app.application.list.all_items' | trans }}: <span class="badge">{{ pagination.getTotalItemCount() }}</span>
+    </div>
+{% endblock %}
 
 {% block content %}
     {% set page_number = pagination.getPage() %}
@@ -11,10 +20,6 @@
     {% if page_number is empty %}
         {% set page_number = 1 %}
     {% endif %}
-
-    <div class="table-count text-right">
-        {{ 'app.application.list.all_items' | trans }}: <span class="badge">{{ pagination.getTotalItemCount() }}</span>
-    </div>
 
     <div class="table-responsive">
         <table class="table table-striped{% if pagination.count() > 0 %} table-hover{% endif %}">

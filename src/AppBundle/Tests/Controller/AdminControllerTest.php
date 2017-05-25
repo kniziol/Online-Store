@@ -12,11 +12,11 @@ use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
  */
 class AdminControllerTest extends WebTestCase
 {
-    public function testIndex()
+    public function testNewProduct()
     {
         $client = static::createClient();
 
-        $client->request('GET', '/admin');
+        $client->request('GET', '/admin/new-product');
         self::assertEquals(302, $client->getResponse()->getStatusCode());
     }
 }

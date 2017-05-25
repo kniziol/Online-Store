@@ -9,7 +9,9 @@ app:
             part5: aby wygodnie korzystać z internetu.
         pages:
             homepage: Strona główna
-            products: Produkty
+            products:
+                list: Produkty
+                create: Nowy produkt
             login: Logowanie
         homepage:
             jumbotron:
@@ -24,12 +26,20 @@ app:
         login: Zaloguj się
         logout: Wyloguj się
         log_me_in: Zaloguj
+        create: Utwórz
+        save: Zapisz
+        show_all: Pokaż wszystkie
+        products:
+            add: Dodaj produkt
     label:
         product:
             name: Nazwa
             price: Cena
             created_at: Utworzono
+            description: Opis
         login:
             username: Użytkownik
             password: Hasło
             signed_as: Zalogowano jako
+    flash:
+        saved: Zapisałem

@@ -1,0 +1,20 @@
+//
+// Online Store
+// Styles for the "Create product" page
+//
+// Created on : 2017-05-25
+// Author     : Meritoo.pl, http://www.meritoo.pl
+// Copyright  : Meritoo.pl
+//
+
+.product-create {
+    .content {
+        form {
+            .form-group {
+                textarea {
+                    min-height: 85px;
+                }
+            }
+        }
+    }
+}

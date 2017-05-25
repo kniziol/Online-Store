@@ -1,0 +1,14 @@
+{% extends '@App/layout.html.twig' %}
+{% trans_default_domain 'AppBundle' %}
+
+{% block body_css_class %}product-create{% endblock %}
+{% block content_title %}{{ 'app.application.pages.products.create' | trans }}{% endblock %}
+{% block content_column_classes %}col-xs-6 col-xs-offset-3{% endblock %}
+
+{% block content_title_actions %}
+    <a href="{{ path('app.product.index') }}" class="btn btn-success">{{ 'app.action.show_all' | trans }}</a>
+{% endblock %}
+
+{% block content %}
+    {{ form(form) }}
+{% endblock %}

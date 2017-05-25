@@ -4,6 +4,7 @@
 {% set body_css_classes = '' %}
 {% set content_column_classes = 'col-xs-12' %}
 {% set content_title = '' %}
+{% set content_title_actions = '' %}
 
 {% if block('body_css_class') is defined %}
     {% set body_css_classes = block('body_css_class') | trim %}
@@ -15,6 +16,10 @@
 
 {% if block('content_title') is defined and block('content_title') is not empty %}
     {% set content_title = block('content_title') %}
+{% endif %}
+
+{% if block('content_title_actions') is defined and block('content_title_actions') is not empty %}
+    {% set content_title_actions = block('content_title_actions') %}
 {% endif %}
 
 {% if content_title is not empty %}
@@ -91,6 +96,12 @@
                                 <h1 class="page-header">
                                     {{ content_title }}
                                 </h1>
+
+                                {% if content_title_actions is not empty %}
+                                    <div class="actions">
+                                        {{ content_title_actions | raw }}
+                                    </div>
+                                {% endif %}
                             </div>
                         </div>
                     {% endif %}

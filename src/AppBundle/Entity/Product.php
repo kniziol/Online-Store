@@ -34,10 +34,10 @@ class Product
 
     /**
      * @var string
-     * @ORM\Column(type="string", length=30)
+     * @ORM\Column(type="string", length=50)
      *
      * @Assert\NotBlank()
-     * @Assert\Length(min="5", max="30")
+     * @Assert\Length(min="5", max="50")
      */
     private $name;
 
@@ -60,10 +60,11 @@ class Product
 
     /**
      * @var float
-     * @ORM\Column(type="decimal", scale=2, precision=5)
+     * @ORM\Column(type="decimal", scale=2, precision=8)
      *
      * @Assert\NotBlank()
      * @Assert\GreaterThan(0)
+     * @Assert\LessThanOrEqual(999999.99)
      */
     private $price;
 

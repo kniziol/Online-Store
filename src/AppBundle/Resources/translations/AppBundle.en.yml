@@ -9,7 +9,9 @@ app:
             part5: to improve your experience.
         pages:
             homepage: Home
-            products: Products
+            products:
+                list: Products
+                create: New product
             login: Login
         homepage:
             jumbotron:
@@ -24,12 +26,20 @@ app:
         login: Login
         logout: Logout
         log_me_in: Login
+        create: Create
+        save: Save
+        show_all: Show all
+        products:
+            add: Add product
     label:
         product:
             name: Name
             price: Price
             created_at: Created
+            description: Description
         login:
             username: User
             password: Password
             signed_as: Signed in as
+    flash:
+        saved: Saved
