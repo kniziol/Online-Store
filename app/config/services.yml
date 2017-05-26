@@ -1,23 +1,58 @@
 services:
     # ----------------------------------------------------------
-    # Twig Extension
-    # ----------------------------------------------------------
-    app.twig_extension:
-        class: AppBundle\Twig\Extension\AppTwigExtension
-        arguments:
-            - '%locale_iso%'
-        tags:
-            - {name: twig.extension}
-    # ----------------------------------------------------------
     # Helper
     # ----------------------------------------------------------
-    app.product.helper:
-        class: AppBundle\Helper\ProductHelper
-        arguments:
-            - '@doctrine.orm.entity_manager'
-            - '@knp_paginator'
     app.flash.helper:
         class: AppBundle\Helper\FlashHelper
         arguments:
             - '@session'
             - '@translator'
+    app.formatting.helper:
+        class: AppBundle\Helper\FormattingHelper
+        arguments:
+            - '%locale_iso%'
+    # ----------------------------------------------------------
+    # Twig Extension
+    # ----------------------------------------------------------
+    app.twig_extension:
+        class: AppBundle\Twig\Extension\AppTwigExtension
+        arguments:
+            - '@app.formatting.helper'
+        tags:
+            - { name: twig.extension }
+    # ----------------------------------------------------------
+    # Command-related handler
+    # ----------------------------------------------------------
+    app.product_create.command_handler:
+        class: AppBundle\CommandQuery\Command\ProductCreateHandler
+        arguments:
+            - '@doctrine.orm.entity_manager'
+            - '@event_recorder'
+        tags:
+            - { name: command_handler, handles: app.product_create.command }
+    app.product_list.command_handler:
+        class: AppBundle\CommandQuery\Command\ProductListHandler
+        arguments:
+            - '@doctrine.orm.entity_manager'
+            - '@knp_paginator'
+        tags:
+            - { name: command_handler, handles: app.product_list.command }
+    # ----------------------------------------------------------
+    # Command-related event's subscriber
+    # ----------------------------------------------------------
+    app.product_created.display_flash_message.event_subscriber:
+        class: AppBundle\CommandQuery\EventSubscriber\DisplayFlashMessage
+        arguments:
+            - '@app.flash.helper'
+        tags:
+            - { name: event_subscriber, subscribes_to: app.product_created.event }
+    app.product_created.send_email_notification.event_subscriber:
+        class: AppBundle\CommandQuery\EventSubscriber\SendEmailNotification
+        arguments:
+            - '%mailer_user%'
+            - '@mailer'
+            - '@translator'
+            - '@templating'
+            - '@app.formatting.helper'
+        tags:
+            - { name: event_subscriber, subscribes_to: app.product_created.event }

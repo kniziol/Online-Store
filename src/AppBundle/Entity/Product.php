@@ -173,5 +173,20 @@ class Product
 
         return $this;
     }
-}
 
+    /**
+     * Creates a new product
+     *
+     * @param string $name        Name of product
+     * @param string $description Description of product
+     * @param float  $price       Price of product
+     * @return Product
+     */
+    public static function create($name, $description, $price)
+    {
+        return (new self())
+            ->setName($name)
+            ->setDescription($description)
+            ->setPrice($price);
+    }
+}

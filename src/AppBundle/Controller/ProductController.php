@@ -2,6 +2,7 @@
 
 namespace AppBundle\Controller;
 
+use AppBundle\CommandQuery\Command\ProductList;
 use Knp\Bundle\PaginatorBundle\Pagination\SlidingPagination;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
@@ -38,11 +39,14 @@ class ProductController extends BaseController
     public function indexAction($page = 1)
     {
         $perPage = $this->getParameter('knp_paginator.page_range');
+        $command = new ProductList($perPage, $page);
+
+        $this
+            ->get('command_bus')
+            ->handle($command);
 
         /* @var $pagination SlidingPagination */
-        $pagination = $this
-            ->get('app.product.helper')
-            ->getProductsPagination($perPage, $page);
+        $pagination = $command->getPagination();
 
         /*
          * Oops, there is not such page

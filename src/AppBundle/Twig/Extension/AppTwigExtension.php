@@ -2,9 +2,7 @@
 
 namespace AppBundle\Twig\Extension;
 
-use DateTime;
-use IntlDateFormatter;
-use NumberFormatter;
+use AppBundle\Helper\FormattingHelper;
 use Twig_Extension;
 use Twig_SimpleFilter;
 use Twig_SimpleFunction;
@@ -18,22 +16,22 @@ use Twig_SimpleFunction;
 class AppTwigExtension extends Twig_Extension
 {
     /**
-     * Locale of application in ISO format (locale that uses ISO-639-1 and ISO-3166 standard).
-     * Defined in configuration.
+     * Helper used for formatting data.
+     * Provides some methods that serves formatting dates, currencies etc.
      *
-     * @var string
+     * @var FormattingHelper
      */
-    private $locale;
+    private $formattingHelper;
 
     /**
      * Class constructor
      *
-     * @param string $locale Locale of application in ISO format (locale that uses ISO-639-1 and ISO-3166 standard).
-     *                       Defined in configuration.
+     * @param FormattingHelper $formattingHelper Helper used for formatting data. Provides some methods that serves
+     *                                           formatting dates, currencies etc.
      */
-    public function __construct($locale)
+    public function __construct(FormattingHelper $formattingHelper)
     {
-        $this->locale = $locale;
+        $this->formattingHelper = $formattingHelper;
     }
 
     /**
@@ -43,11 +41,11 @@ class AppTwigExtension extends Twig_Extension
     {
         $callable = [
             1 => [
-                $this,
+                $this->formattingHelper,
                 'formatDate',
             ],
             2 => [
-                $this,
+                $this->formattingHelper,
                 'formatCurrency',
             ],
             3 => [
@@ -79,38 +77,6 @@ class AppTwigExtension extends Twig_Extension
         ];
     }
 
-    /**
-     * Returns formatted date (with or without time)
-     *
-     * @param int | DateTime $date        The date to format
-     * @param bool           $withoutTime (optional) If is set to true, date without time is returend. Otherwise - with.
-     * @return bool|string
-     */
-    public function formatDate($date, $withoutTime = false)
-    {
-        $dateType = IntlDateFormatter::MEDIUM;
-        $timeType = IntlDateFormatter::MEDIUM;
-
-        if ($withoutTime) {
-            $timeType = IntlDateFormatter::NONE;
-        }
-
-        return IntlDateFormatter::create($this->locale, $dateType, $timeType)->format($date);
-    }
-
-    /**
-     * Returns formatted value with currency
-     *
-     * @param float $value The date to format
-     * @return string
-     */
-    public function formatCurrency($value)
-    {
-        $formatter = NumberFormatter::create($this->locale, NumberFormatter::CURRENCY);
-        $currencyCode = $formatter->getTextAttribute(NumberFormatter::CURRENCY_CODE);
-
-        return NumberFormatter::create($this->locale, NumberFormatter::CURRENCY)->formatCurrency($value, $currencyCode);
-    }
 
     /**
      * Returns number of item that is part of paginated set

@@ -43,3 +43,6 @@ app:
             signed_as: Zalogowano jako
     flash:
         saved: Zapisałem
+    mail:
+        product_created:
+            subject: 'Nowy produkt został utworzony (%name%, ID: %id%)'

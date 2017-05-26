@@ -1,0 +1,37 @@
+{% trans_default_domain 'AppBundle' %}
+
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body style="color: #333">
+    <p>
+        <label style="font-weight: bold;">ID</label>
+        <br>
+        {{ product.id }}
+    </p>
+    <p>
+        <label style="font-weight: bold;">{{ 'app.label.product.name' | trans }}</label>
+        <br>
+        {{ product.name }}
+    </p>
+    <p>
+        <label style="font-weight: bold;">{{ 'app.label.product.created_at' | trans }}</label>
+        <br>
+        {{ product.createdAt | app_date_format }}
+    </p>
+    <p>
+        <label style="font-weight: bold;">{{ 'app.label.product.price' | trans }}</label>
+        <br>
+        {{ product.price | app_currency_format }}
+    </p>
+    <p>
+        <label style="font-weight: bold;">{{ 'app.label.product.description' | trans }}</label>
+        <br>
+        {{ product.description | nl2br }}
+    </p>
+</body>
+</html>

@@ -1,19 +1,18 @@
 <?php
 
-namespace AppBundle\Helper;
+namespace AppBundle\CommandQuery\Command;
 
 use AppBundle\Entity\Product;
 use Doctrine\ORM\EntityManager;
-use Knp\Component\Pager\Pagination\PaginationInterface;
 use Knp\Component\Pager\Paginator;
 
 /**
- * Helper related to the Product entity
+ * Handler for the "product list" command
  *
  * @author    Krzysztof Niziol <krzysztof.niziol@meritoo.pl>
  * @copyright Meritoo.pl
  */
-class ProductHelper
+class ProductListHandler
 {
     /**
      * The central access point to ORM functionality
@@ -42,35 +41,25 @@ class ProductHelper
     }
 
     /**
-     * Returns products for pagination
+     * Handles the command.
+     * Prepares products that will be listed.
      *
-     * @param int $perPage    Amount of items on one page
-     * @param int $pageNumber (optional) Current number of page
-     * @return PaginationInterface
+     * @param ProductList $command The "product list" command
      */
-    public function getProductsPagination($perPage, $pageNumber = 1)
+    public function handle(ProductList $command)
     {
+        $pageNumber = $command->getPageNumber();
+        $perPage = $command->getPerPage();
+
         $queryBuilder = $this
             ->entityManager
             ->getRepository(Product::class)
             ->getAllProducts();
 
-        return $this
+        $pagination = $this
             ->knpPaginator
             ->paginate($queryBuilder, $pageNumber, $perPage);
-    }
 
-    /**
-     * Creates a product
-     *
-     * @param Product $product The product to create
-     * @return $this
-     */
-    public function createProduct(Product $product)
-    {
-        $this->entityManager->persist($product);
-        $this->entityManager->flush();
-
-        return $this;
+        $command->setPagination($pagination);
     }
 }

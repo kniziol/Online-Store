@@ -2,6 +2,7 @@
 
 namespace AppBundle\Controller;
 
+use AppBundle\CommandQuery\Command\ProductCreate;
 use AppBundle\Entity\Product;
 use AppBundle\Form\Type\ProductType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -35,13 +36,29 @@ class AdminController extends BaseController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $this
-                ->get('app.product.helper')
-                ->createProduct($product);
+            /*
+             * Let's prepare data of product
+             */
+            $name = $form
+                ->get(ProductType::FIELD_NAME)
+                ->getData();
+
+            $description = $form
+                ->get(ProductType::FIELD_DESCRIPTION)
+                ->getData();
+
+            $price = $form
+                ->get(ProductType::FIELD_PRICE)
+                ->getData();
+
+            /*
+             * ...and handle the "product create" command
+             */
+            $command = new ProductCreate($name, $description, $price);
 
             $this
-                ->get('app.flash.helper')
-                ->add('app.flash.saved');
+                ->get('command_bus')
+                ->handle($command);
 
             return $this->redirectToRoute('app.product.index');
         }

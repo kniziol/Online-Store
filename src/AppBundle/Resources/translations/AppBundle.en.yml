@@ -43,3 +43,6 @@ app:
             signed_as: Signed in as
     flash:
         saved: Saved
+    mail:
+        product_created:
+            subject: 'New product was created (%name%, ID: %id%)'

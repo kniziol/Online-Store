@@ -18,3 +18,11 @@ knp_paginator:
     template:
         pagination: 'KnpPaginatorBundle:Pagination:twitter_bootstrap_v3_pagination.html.twig'   # sliding pagination controls template
         sortable: 'KnpPaginatorBundle:Pagination:sortable_link.html.twig'                       # sort link template
+
+# SimpleBusCommandBusBundle
+command_bus:
+    command_name_resolver_strategy: named_message # or: class_based
+
+# SimpleBusEventBusBundle
+event_bus:
+    event_name_resolver_strategy: named_message # or: class_based
