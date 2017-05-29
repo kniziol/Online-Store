@@ -22,26 +22,30 @@
     {% endif %}
 
     <div class="table-responsive">
-        <table class="table table-striped{% if pagination.count() > 0 %} table-hover{% endif %}">
-            <tr>
-                <th>{{ 'app.application.list.position' | trans }}</th>
-                <th>{{ 'app.label.product.name' | trans }}</th>
-                <th>{{ 'app.label.product.price' | trans }}</th>
-                <th>{{ 'app.label.product.created_at' | trans }}</th>
-            </tr>
+        <table class="table table-striped{% if pagination.count() > 0 %} table-hover{% endif %} products">
+            <thead>
+                <tr>
+                    <th>{{ 'app.application.list.position' | trans }}</th>
+                    <th>{{ 'app.label.product.name' | trans }}</th>
+                    <th>{{ 'app.label.product.price' | trans }}</th>
+                    <th>{{ 'app.label.product.created_at' | trans }}</th>
+                </tr>
+            </thead>
 
-            {% for product in pagination %}
-                <tr>
-                    <td>{{ app_paginated_item_number(loop.index, per_page, page_number) }}</td>
-                    <td>{{ product.name }}</td>
-                    <td>{{ product.price | app_currency_format }}</td>
-                    <td>{{ product.createdAt | app_date_format(true) }}</td>
-                </tr>
-            {% else %}
-                <tr>
-                    <td colspan="4" class="text-center warning no-data">{{ 'app.application.list.no_data' | trans }}</td>
-                </tr>
-            {% endfor %}
+            <tbody>
+                {% for product in pagination %}
+                    <tr>
+                        <td>{{ app_paginated_item_number(loop.index, per_page, page_number) }}</td>
+                        <td>{{ product.name }}</td>
+                        <td>{{ product.price | app_currency_format }}</td>
+                        <td>{{ product.createdAt | app_date_format(true) }}</td>
+                    </tr>
+                {% else %}
+                    <tr>
+                        <td colspan="4" class="text-center warning no-data">{{ 'app.application.list.no_data' | trans }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
         </table>
     </div>
 

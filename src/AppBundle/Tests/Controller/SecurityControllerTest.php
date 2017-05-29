@@ -31,19 +31,21 @@ class SecurityControllerTest extends WebTestCase
         self::assertEquals(200, $client->getResponse()->getStatusCode());
 
         if (!empty($error)) {
-            $flashContainer = $crawler->filter('#flash-messages.container .row .col-xs-12.alert.alert-danger.danger');
-            self::assertEquals($error, trim($flashContainer->text()));
+            $flashMessage = $crawler
+                ->filter('#flash-messages.container .row .col-xs-12 .alert.alert-danger.danger')
+                ->text();
+
+            self::assertEquals($error, trim($flashMessage));
         }
     }
 
     /**
      * @param string $username Username used to login
      * @param string $password Password used to login
-     * @param string $error    Error if credentials are invalid
      *
      * @dataProvider getValidCredentials
      */
-    public function testLogout($username, $password, $error)
+    public function testLogout($username, $password)
     {
         $client = static::createClient();
         $client->followRedirects();
@@ -64,10 +66,14 @@ class SecurityControllerTest extends WebTestCase
      */
     public function getCredentials()
     {
-        $invalid = $this->getInvalidCredentials()->current();
-        $valid = $this->getValidCredentials()->current();
+        $invalid = self::getGeneratorElements($this->getInvalidCredentials());
+        $valid = self::getGeneratorElements($this->getValidCredentials());
 
-        yield array_merge($invalid, $valid);
+        $merged = array_merge($invalid, $valid);
+
+        foreach ($merged as $item) {
+            yield $item;
+        }
     }
 
     /**
@@ -123,5 +129,22 @@ class SecurityControllerTest extends WebTestCase
             'login[username]' => $username,
             'login[password]' => $password,
         ]);
+    }
+
+    /**
+     * Returns elements of generator
+     *
+     * @param Generator $generator The generator who elements should be returned
+     * @return array
+     */
+    private static function getGeneratorElements(Generator $generator)
+    {
+        $elements = [];
+
+        for (; $generator->valid(); $generator->next()) {
+            $elements[] = $generator->current();
+        }
+
+        return $elements;
     }
 }
