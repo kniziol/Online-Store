@@ -91,7 +91,7 @@ Symfony-based online store.  Allows to display and manage products.
 3. Populate tables (using DataFixtures)
 
      ```bash
-    $ php bin/console hautelook_alice:fixtures:load --no-interaction --purge-with-truncate
+    $ php bin/console hautelook:fixtures:load --no-interaction --purge-with-truncate
     ```
 
 # Running
